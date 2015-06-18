@@ -10,7 +10,7 @@
 <div class="the-box col-xs-8 col-xs-offset-2">
   <%= link_to '&#8592; Back to Applications'.html_safe, applications_path, class: 'btn btn-warning' %> 
   <h2 class="app-index"><%= @application.name %></h2><br />
-  <%= pie_chart @application.events.group(:name).count, style: {width: '10px' } %>
+  <%= pie_chart @application.events.group(:name).count %>
   <% if Rails.env.production? %>
     <%= line_chart @application.events.group_by_day(:created_at).count %>
   <% else %>
