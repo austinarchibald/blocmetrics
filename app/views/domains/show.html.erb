@@ -1,0 +1,38 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+      $("button").click(function(){
+          var $button = $(this);
+          $("table").toggle(400, null, function () {
+            var buttonText = $("table").is(":hidden") ? "Show Table" : "Hide Table";
+            $button.html(buttonText);
+          });
+      });
+  });
+</script>
+
+
+<div class="the-box col-xs-8 col-xs-offset-2">
+  <%= link_to '&#8592; Back to Domains'.html_safe, domains_path, class: 'btn btn-warning' %> 
+  <h2 class="app-index"><%= @domain.name %></h2><br />
+  <%= pie_chart @domain.events.group(:name).count %>
+  <% if Rails.env.production? %>
+    <%= line_chart @domain.events.group_by_day(:created_at).count %>
+  <% else %>
+    <%= line_chart @domain.events.group(:created_at).count %>
+  <% end %>
+  <button class="btn btn-success">Show Table</button>
+  <table style="display:none">
+    <thead>
+      <tr>
+        <th>Event</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><% @events.each do |name, events| %></tr>
+        <td><%= name %></td>
+        <td><%= events.length %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

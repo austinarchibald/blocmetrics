@@ -1,0 +1,5 @@
+<% if @domain.destroyed? %>
+	$('#domain-' + <%= @domain.id %>).fadeOut();
+<% else %>
+	$('#domain-' + <%= @domain.id %>).prepend("<div class='alert alert-danger'><%= flash[:error] %></div>");
+<% end %>

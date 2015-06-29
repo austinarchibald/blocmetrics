@@ -1,0 +1,5 @@
+<%= content_tag :tr, id: "domain-#{domain.id}" do %>
+  <td><%= link_to domain.name, domain %> </td>
+  <td><%= domain.url %></td>
+  <td><%= link_to "", domain, method: :delete, data: { confirm: "Are you sure? Deletion is FINAL." }, remote: true, class: 'glyphicon glyphicon-remove' %> </td>
+<% end %>
