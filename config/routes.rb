@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :applications
+  devise_for :users, controllers: { sessions: 'sessions' }
+  resources :domains
 
   namespace :api, defaults: { format: :json } do
     resources :events, only: [:create]
@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   match "/api/events", to: "api/events#preflight", via: [:options]
 
-  root to: 'home#index'
+  root 'home#index'
+  get '/ember', to: 'ember#bootstrap'
+  get '/ember/*path', to: 'ember#bootstrap'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

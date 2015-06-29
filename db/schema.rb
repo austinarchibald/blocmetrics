@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150616180905) do
 
-  create_table "applications", force: :cascade do |t|
+  create_table "domains", force: :cascade do |t|
     t.string   "name"
     t.string   "url"
     t.integer  "user_id"
@@ -21,16 +21,16 @@ ActiveRecord::Schema.define(version: 20150616180905) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "applications", ["user_id"], name: "index_applications_on_user_id"
+  add_index "domains", ["user_id"], name: "index_domains_on_user_id"
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
-    t.integer  "application_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "domain_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "events", ["application_id"], name: "index_events_on_application_id"
+  add_index "events", ["domain_id"], name: "index_events_on_domain_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20150616180905) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "authentication_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

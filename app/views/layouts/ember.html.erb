@@ -2,12 +2,18 @@
 <html dir="ltr" lang="<%= I18n.locale %>">
   <head>
     <meta charset="UTF-8">
-    <title>Ember</title>
-    <%= stylesheet_link_tag 'frontend' %>
+    <title>Blocmetrics Emberified</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= include_ember_stylesheet_tags :frontend %>
     <%= include_ember_script_tags :frontend %>
+    <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
   </head>
 
   <body>
+    
     <%= yield %>
+
   </body>
 </html>

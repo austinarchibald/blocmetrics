@@ -1,3 +1,3 @@
 class Event < ActiveRecord::Base
-  belongs_to :application
+  belongs_to :domain
 end

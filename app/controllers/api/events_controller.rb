@@ -3,11 +3,11 @@ class API::EventsController < ApplicationController
   before_action :cors_set_access_control_headers, only: [:create]
   
   def create
-    application = Application.find_by(url: request.env['HTTP_ORIGIN'])
-    if !application
-      render json: "Unregistered application", status: :unprocessable_entity
+    domain = Domain.find_by(url: request.env['HTTP_ORIGIN'])
+    if !domain
+      render json: "Unregistered domain", status: :unprocessable_entity
     else
-      @event = application.events.build
+      @event = domain.events.build
       @event.name = params[:event_name]
       if @event.save
         render json: @event, status: :created

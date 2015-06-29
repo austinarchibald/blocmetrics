@@ -10,26 +10,26 @@ me.save!
 
 users = User.all
 
-# Create Applications
+# Create Domains
 5.times do
-  Application.create!(
+  Domain.create!(
     name: Faker::App.name,
     user: users.sample,
     url:  Faker::Internet.url
   )
 end
-applications = Application.all
+domains = Domain.all
 
 # Create Events
 500.times do
   event = Event.create!(
     name:        Faker::Hacker.ingverb,
     # user:        users.sample,
-    application: applications.sample
+    domain: domains.sample
   )
 end
 
 puts "Seed finished"
 puts "#{User.count} users created."
-puts "#{Application.count} applications registered."
+puts "#{Domain.count} domains registered."
 puts "#{Event.count} events tracked."
