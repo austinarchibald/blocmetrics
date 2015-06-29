@@ -1,0 +1,39 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+      $("button").click(function(){
+          var $button = $(this);
+          $("table").toggle(400, null, function () {
+            var buttonText = $("table").is(":hidden") ? "Show Table" : "Hide Table";
+            $button.html(buttonText);
+          });
+      });
+  });
+</script>
+
+
+<div class="the-box col-xs-8 col-xs-offset-2">
+	{{#link-to 'domains' class="btn btn-warning"}}&#8592; Back to Domains{{/link-to}}
+	<h2 class="app-index">{{domain.name}}</h2><br />
+
+	{{!-- {{pie-chart chartData=chartData}} --}}
+
+	<hr>
+	
+	<button class="btn btn-success">Show Table</button>
+  <table style="display:none">
+	  <thead>
+	    <tr>
+	      <th>Event</th>
+	      <th>Count</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+				{{#each model.events_list as |event|}}
+				<tr><td>{{event.event_name}}</td>
+					<td>{{event.count}}</td></tr>
+				{{/each}}
+				
+		</tbody>
+	</table>
+
+</div>

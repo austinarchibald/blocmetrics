@@ -1,0 +1,27 @@
+<div class="the-box col-xs-8 col-xs-offset-2">
+  <h2 class="app-index">Your Domains</h2><br />
+  <center>{{input type="text" value=this.search placeholder="filter" className="search"}}</center><br />
+  <table>
+    <thead>
+      <tr>
+        <th>Domain Name</th>
+        <th>URL</th>
+        <th>Delete?</th>
+      </tr>
+    </thead>
+    <tbody>
+				{{#each domain in model}}
+				<tr><td>{{link-to domain.name 'domain' domain}}</td>
+					<td>{{domain.url}}</td>
+					<td><a href="#" {{action "delete" domain}}><span class="glyphicon glyphicon-remove"></span></a></td></tr>
+				{{/each}}
+				
+		</tbody>
+	</table>
+
+	<hr>
+	{{link-to "New Domain" "domains.new" class="btn btn-success"}}
+	
+	{{outlet}}
+
+</div>

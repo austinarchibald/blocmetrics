@@ -1,0 +1,45 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      	{{#link-to 'application' class="navbar-brand"}}<span class="glyphicon glyphicon-stats"></span> &nbsp;Blocmetrics{{/link-to}}
+		</div>
+
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        {{#if session.isAuthenticated}}
+      	<li>{{#link-to '' class="nav navbar-nav navbar-right"}}<span class="glyphicon glyphicon-pencil"></span> &nbsp;Edit{{/link-to}}</li>
+        {{else}}
+          <li><a href="https://github.com/austinarchibald/blocmetrics">About</a></li>
+        {{/if}}
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="glyphicon glyphicon-cog"></span> <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            {{#if session.isAuthenticated}}
+              <li><a href="#"{{action 'invalidateSession'}}>Sign Out</a></li>
+              <li>{{#link-to 'domains'}}Your Domains{{/link-to}}</li>
+              <li class="divider"></li>
+              {{#each domain in model}}
+                <li>{{link-to domain.name 'domain' domain}}</li>
+              {{/each}}
+            {{else}}
+              <li>{{link-to 'Sign In' 'login'}}</li>
+            {{/if}}            
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+{{outlet}}

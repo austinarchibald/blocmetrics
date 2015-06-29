@@ -1,0 +1,12 @@
+<h4 align="center">Register a new domain:</h4>
+<form{{action "save" on="submit"}}>
+<h2>{{errorMessage}}</h2>
+  <div class="form-group">
+    {{input value=model.name placeholder="Domain" class="form-control"}}
+  </div>
+  <div class="form-group">
+    {{input value=model.url placeholder="URL" class="form-control"}}
+  </div>
+  <button type="submit" class="btn btn-success">Save</button>
+  <button {{action "cancel"}} class="btn btn-danger pull-right">Cancel</button>
+</form>
