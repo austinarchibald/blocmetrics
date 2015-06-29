@@ -10,7 +10,6 @@ Router.map(function() {
   	this.route('new');
   });
   this.route('domain', { path: '/ember/domains/:id' });
-  this.route('login', { path: '/ember/login' });
 });
 
 export default Router;

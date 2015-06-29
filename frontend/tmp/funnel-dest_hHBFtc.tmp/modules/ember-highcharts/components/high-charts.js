@@ -1,0 +1,1 @@
+/Users/austin/dev/bloc/blocmetrics/frontend/node_modules/ember-highcharts/addon/components/high-charts.js
