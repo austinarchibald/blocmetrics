@@ -15,12 +15,12 @@
 	{{#link-to 'domains' class="btn btn-warning"}}&#8592; Back to Domains{{/link-to}}
 	<h2 class="app-index">{{domain.name}}</h2><br />
 
-	{{!-- {{pie-chart chartData=chartData}} --}}
+  {{high-charts mode=chartMode content=chartData chartOptions=chartOptions theme=theme}}
 
 	<hr>
 	
 	<button class="btn btn-success">Show Table</button>
-  <table style="display:none">
+  <table style="display:none" id="datatable">
 	  <thead>
 	    <tr>
 	      <th>Event</th>
