@@ -21,7 +21,11 @@ module.exports = function(environment) {
 
   ENV['simple-auth'] = {
     authorizer: 'simple-auth-authorizer:devise'
-  }
+  };
+
+  ENV['simple-auth-devise'] = {
+  identificationAttributeName: 'email'
+};
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
